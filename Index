@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>What's the theme?</title>
+    <style>
+        body {
+            background: #f7f7ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #333;
+        }
+
+        input {
+            padding: 12px;
+            width: 260px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 2px solid #999;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            margin-left: 10px;
+            border: none;
+            background: #ff54b3;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff1d9b;
+        }
+
+        img {
+            margin-top: 30px;
+            width: 320px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>What's the theme? 👗✨</h1>
+
+    <input id="themeInput" type="text" placeholder="Type a theme...">
+    <button onclick="generateImage()">Turn Look</button>
+
+    <div id="result"></div>
+
+    <script>
+        function generateImage() {
+            let theme = document.getElementById("themeInput").value;
+            let resultDiv = document.getElementById("result");
+
+            if (theme.trim() === "") {
+                resultDiv.innerHTML = "<p>Please enter a theme 💜</p>";
+                return;
+            }
+
+            // Always returns fashion / model / runway images
+            let imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(theme + " fashion runway model full body outfit high quality runway photo")}`;
+
+            resultDiv.innerHTML = `
+                <p>Theme: <strong>${theme}</strong></p>
+                <img src="${imageUrl}" alt="Outfit Image">
+            `;
+        }
+    </script>
+
+</body>
+</html>;
